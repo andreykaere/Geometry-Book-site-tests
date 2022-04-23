@@ -22,13 +22,13 @@ function getContentName(content) {
 
 
 function getState(content) {
-    let reg = /-(.*)/
+    let reg = /.*-(.*)/;
 	return content.id.match(reg)[1];
 }
 
 
 function getSectionName(content) {
-    let reg = /(.*)_.*_/
+    let reg = /(.*?)_/;//let reg = /(.*)_.*_/
 	return content.id.match(reg)[1];
 }
 
@@ -40,7 +40,9 @@ function getOppositeState(state) {
 }
 
 function changeToggleFunctionArg(content, state) {
-    let section = document.getElementById(getSectionName(content));
+    let section = document.getElementById(getSectionName(content))
+		                  .children[0].children[0];
+	//console.log(section);
     let callFunction = section.getAttribute("onclick");
     
 	//console.log(callFunction);
@@ -172,15 +174,21 @@ let addStyle = (function (style) {
 function setInitialState(elementsNames, storage) {
     
 	for (index in elementsNames) {
-        let name        = elementsNames[index];
-		let element     = document.getElementById(name);
+        let elementName = elementsNames[index];
+		let element     = document.getElementById(elementName);
+        
 
+		//ignore elemnts which is not contained by this page
 		if (!element) {continue;}
 
 		let contentName = getContentName(element);
 		let state       = getState(element);
         
+        //console.log(contentName, state);
+
+
 		if (!storage.getItem(contentName)){
+			 //console.log(contentName, 2);
 			 storage.setItem(contentName, "hidden");
 		}
 		//console.log(element.id);
@@ -207,7 +215,7 @@ function main() {
 	let storage = window.localStorage;
 
     //all elements is visible by default and then we make them hidden
-	let elementsNames = ['Доказательство_fact4_div-visible', 'Доказательство_fact2_div-visible', 'Рисунок_fact6_div-visible', 'Рисунок_fact7_div-visible', 'Решение_print_div-visible', 'Рисунок_fact1_div-visible', 'Рисунок_print_div-visible', 'Доказательство_problem1_div-visible', 'Подсказка_fact3_div-visible', 'Подсказка_fact8_div-visible', 'Подсказка_problem2_div-visible', 'Подсказка_fact5_div-visible', 'Доказательство_problem3_div-visible', 'Подсказка_fact6_div-visible', 'Подсказка_problem4_div-visible', 'Рисунок_problem2_div-visible', 'Рисунок_problem1_div-visible', 'Рисунок_fact3_div-visible', 'Рисунок_fact5_div-visible', 'Рисунок_problem3_div-visible', 'Доказательство_fact8_div-visible', 'Доказательство_problem2_div-visible', 'Подсказка_fact7_div-visible', 'Доказательство_fact9_div-visible', 'Подсказка_problem1_div-visible', 'Подсказка_fact1_div-visible', 'Подсказка_fact2_div-visible', 'Подсказка_fact4_div-visible', 'Решение_problem4_div-visible', 'Доказательство_fact3_div-visible', 'Доказательство_fact1_div-visible', 'Доказательство_fact6_div-visible', 'Рисунок_fact2_div-visible', 'Подсказка_problem3_div-visible', 'Доказательство_fact7_div-visible', 'Подсказка_print_div-visible', 'Доказательство_print_div-visible', 'Рисунок_problem4_div-visible', 'Рисунок_fact8_div-visible', 'Рисунок_fact9_div-visible', 'Рисунок_fact4_div-visible', 'Доказательство_fact5_div-visible', 'Подсказка_fact9_div-visible'];
+	let elementsNames = ['Подсказка_fact9_div-visible', 'Доказательство_fact6_div-visible', 'Доказательства-свойств_orthocenter_div-visible', 'Доказательство_fact2_div-visible', 'Подсказка_fact8_div-visible', 'Подсказка_fact1_div-visible', 'Доказательство_fact1_div-visible', 'Подсказка_problem4_div-visible', 'Доказательство_fact4_div-visible', 'Решение_problem4_div-visible', 'Доказательства-свойств_print_div-visible', 'Рисунок_fact3_div-visible', 'Рисунок_print_div-visible', 'Доказательство_fact8_div-visible', 'Рисунок_fact2_div-visible', 'Доказательство_fact9_div-visible', 'Рисунок_problem3_div-visible', 'Подсказка_fact3_div-visible', 'Рисунок_fact5_div-visible', 'Подсказка_fact7_div-visible', 'Доказательство_fact3_div-visible', 'Подсказка_problem1_div-visible', 'Доказательство_print_div-visible', 'Рисунок_problem4_div-visible', 'Рисунок_fact10_div-visible', 'Доказательства-свойств_homothetic_div-visible', 'Доказательство_problem2_div-visible', 'Подсказка_fact4_div-visible', 'Подсказка_problem3_div-visible', 'Решение_print_div-visible', 'Рисунок_fact7_div-visible', 'Рисунок_problem2_div-visible', 'Подсказка_fact6_div-visible', 'Доказательство_problem3_div-visible', 'Доказательства-свойств_inversion_div-visible', 'Рисунок_fact9_div-visible', 'Рисунок_fact1_div-visible', 'Подсказка_fact10_div-visible', 'Подсказка_problem2_div-visible', 'Рисунок_fact8_div-visible', 'Подсказка_fact5_div-visible', 'Подсказка_fact2_div-visible', 'Рисунок_problem1_div-visible', 'Рисунок_fact6_div-visible', 'Доказательство_fact10_div-visible', 'Доказательство_fact5_div-visible', 'Доказательство_fact7_div-visible', 'Доказательство_problem1_div-visible', 'Подсказка_print_div-visible', 'Рисунок_fact4_div-visible'];
 
 	setInitialState(elementsNames, storage);
 }
