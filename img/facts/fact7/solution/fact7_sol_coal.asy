@@ -1,57 +1,58 @@
 import geometry;
-size(7cm);
-
+size(8cm);
 
 pen penColor = rgb("98a3ad");
 
-triangle t = triangleabc(4, 5.5, 6);
+triangle t = triangleabc(5, 6, 7);
 
-point A = t.C;
 point B = t.A;
+point A = t.C;
 point C = t.B;
 
 
-circle ic = incircle(t);
-circle w = circle(t);
+circle exB = excircle(A, C, B);
+circle exC = excircle(A, B, C);
 
-point I = ic.C;
-point O = w.C;
-
-
-point M = intersectionpoints(line(I, O), w)[0];
-point _N = intersectionpoints(line(I, O), w)[1];
-
-point L = intersectionpoints(line(A, I), w)[0];
-
-point Ip = projection(line(A, C))*I;
+point Ib = exB.C;
+point Ic = exC.C;
 
 //draw
-draw(t, penColor);
-draw(ic, penColor);
-draw(w, penColor);
-
-dot("$A$", A, N+E*0.5, fontsize(12) + penColor);
-dot("$B$", B, SW, fontsize(12) + penColor);
-dot("$C$", C, SE, fontsize(12) + penColor);
 
 
-dot(Label("$I$"), I, SE, fontsize(12) + penColor);
-dot(Label("$O$"), O, S*0.7+E*0.5, fontsize(12) + penColor);
+
+clipdraw(exB, penColor);
+clipdraw(exC, penColor);
 
 
-dot(Label("$N$"), _N, fontsize(12) + penColor);
-dot(Label("$M$"), M, SW, fontsize(12) + penColor);
+dot("$I_c$", Ic, S*0+W, fontsize(12) + penColor);
+dot("$I_b$", Ib, S*0+E, fontsize(12) + penColor);
 
-dot(Label("$L$"), L, S+E*0.7, fontsize(12) + penColor);
-
-draw(segment(M, _N), penColor);
-draw(segment(A, I), penColor);
-draw(segment(C, L), penColor, StickIntervalMarker(1, 1, 4, penColor));
-draw(segment(I, L), penColor, StickIntervalMarker(1, 1, 4, penColor));
+clipdraw(circle(B, C, Ib), penColor + dashed);
 
 
-draw(Label("$r$", Relative(0.5)), segment(I, Ip), fontsize(11) + penColor);
 
-markangle(Label("$\alpha$", fontsize(10) + penColor), I, A, C, penColor, n=1, radius=4.5mm);
-markangle(Label("$\alpha$", fontsize(10) + penColor), B, A, I, penColor, n=1, radius=5.3mm);
-markrightangle(I, Ip, A, 6, penColor);
+
+markangle(line(B, C), line(C, Ib), penColor, n=1, radius=4mm);
+markangle(Ic, C, B, penColor, n=2, radius=5mm);
+markangle(A, C, Ic, penColor, n=2, radius=4.3mm);
+markangle(Ib, C, A, penColor, n=1,  radius=3.4mm);
+
+draw(segment(Ic, Ib), penColor);
+draw(segment(Ic, C), penColor);
+draw(segment(B, Ib), penColor);
+draw(segment(C, Ib), penColor);
+draw(segment(Ic, B), penColor);
+
+draw(line(A, B), penColor);
+draw(line(A, C), penColor);
+draw(line(C, B), penColor);
+
+markrightangle(Ic, B, Ib, 8, penColor);
+
+dot("$A$", A, N*2+E*0.2, fontsize(12) + penColor);
+dot("$B$", B, S*1.25+W*3, fontsize(12) + penColor);
+dot("$C$", C, S*1+E*2, fontsize(12) + penColor);
+
+
+
+addMargins(cm/2, cm);

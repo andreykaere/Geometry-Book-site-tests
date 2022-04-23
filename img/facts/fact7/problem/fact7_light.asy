@@ -1,35 +1,39 @@
 import geometry;
-size(7cm);
-
+size(8cm);
 
 pen penColor = rgb("333333");
 
-triangle t = triangleabc(4, 5.5, 6);
+triangle t = triangleabc(5, 6, 7);
 
-point A = t.C;
 point B = t.A;
+point A = t.C;
 point C = t.B;
 
 
-circle ic = incircle(t);
-circle w = circle(t);
+circle exB = excircle(A, C, B);
+circle exC = excircle(A, B, C);
 
-point I = ic.C;
-point O = w.C;
+point Ib = exB.C;
+point Ic = exC.C;
 
 //draw
 
+draw(line(A, B), penColor);
+draw(line(A, C), penColor);
+draw(line(C, B), penColor);
 
-draw(t, penColor);
-draw(ic, penColor);
-draw(w, penColor);
+dot("$A$", A, N*2+E*0.2, fontsize(12) + penColor);
+dot("$B$", B, S*1.25+W*3, fontsize(12) + penColor);
+dot("$C$", C, S*1+E*2, fontsize(12) + penColor);
 
-dot("$A$", A, N+E*0.5, fontsize(12) + penColor);
-dot("$B$", B, SW, fontsize(12) + penColor);
-dot("$C$", C, SE, fontsize(12) + penColor);
+clipdraw(exB, penColor);
+clipdraw(exC, penColor);
 
 
-dot(Label("$I$"), I, fontsize(12) + penColor);
-dot(Label("$O$"), O, SE, fontsize(12) + penColor);
+dot("$I_c$", Ic, S*0+W, fontsize(12) + penColor);
+dot("$I_b$", Ib, S*0+E, fontsize(12) + penColor);
 
-draw(Label("?", Relative(0.5)), segment(I, O), fontsize(10)+penColor);
+clipdraw(circle(B, C, Ib), penColor + dashed);
+
+
+addMargins(cm/2, cm);
