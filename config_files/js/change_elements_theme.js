@@ -1,4 +1,7 @@
 
+//$(document).ready(main);
+
+
 
 let THEME_COLOR = {'light': '#333333',
                    'rust':  '#262625', 
@@ -6,7 +9,6 @@ let THEME_COLOR = {'light': '#333333',
                    'ayu':   '#c5c5c5', 
                    'navy':  '#bcbdd0', 
 };
-
 
 
 
@@ -84,7 +86,4 @@ function main() {
     });
 }
 
-
 main();
-
-

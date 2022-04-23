@@ -1,5 +1,5 @@
 import geometry;
-size(7cm);
+size(8.3cm);
 
 pen penColor = rgb("262625");
 

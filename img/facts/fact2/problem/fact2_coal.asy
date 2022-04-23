@@ -1,6 +1,7 @@
-
 import geometry;
 size(5.8cm);
+
+pen penColor = rgb("98a3ad");
 
 circle w = circle((point)(0, 0), 1);
 point o = w.C;
@@ -42,25 +43,25 @@ line a2 = tangent(al, A2);
 //draw
 
 //draw(Label("$\Omega$", Relative(-0.1), S+E*2, fontsize(11)), w, linewidth(0.3) + dashed);
-draw(Label("$\Omega$", Relative(-0.13), S*1.3, fontsize(13)), 
-                                    w, linewidth(0.3) + dashed);
+draw(Label("$\Omega$", Relative(-0.13), S*1.3, fontsize(13)+penColor), 
+                                    w, linewidth(0.3) + dashed+penColor);
 
-dot("$A$", A, NE, fontsize(13));
-dot("$B$", B, SE, fontsize(13));
-dot("$C$", C, SW, fontsize(13));
-dot("$D$", D, NW, fontsize(13));
+dot("$A$", A, NE, fontsize(13) + penColor);
+dot("$B$", B, SE, fontsize(13) + penColor);
+dot("$C$", C, SW, fontsize(13) + penColor);
+dot("$D$", D, NW, fontsize(13) + penColor);
 
 
-draw(segment(A, B));
-draw(segment(C, B));
-draw(segment(C, D));
-draw(segment(A, D));
+draw(segment(A, B), penColor);
+draw(segment(C, B), penColor);
+draw(segment(C, D), penColor);
+draw(segment(A, D), penColor);
 
-draw(segment(B, D));
+draw(segment(B, D), penColor);
 //draw(segment(A, C));
 
-draw(Label("$\alpha$", Relative(-0.15), S*0.7, fontsize(10)), al);
-draw(Label("$\gamma$", Relative(-0.1), S*1.2, fontsize(10)), gam);
+draw(Label("$\alpha$", Relative(-0.15), S*0.7, fontsize(10) + penColor), al, penColor);
+draw(Label("$\gamma$", Relative(-0.1), S*1.2, fontsize(10) + penColor), gam, penColor);
 /*
 draw(Label("$a'$", fontsize(10)), ap);
 draw(Label("$c'$", Relative(0.1), NE, fontsize(10)), cp);
