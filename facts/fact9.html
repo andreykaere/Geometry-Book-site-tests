@@ -171,9 +171,21 @@
 </div>
 <a class="header" href="#Подсказка" id="Подсказка" onclick='sectionToggle("Подсказка_fact9_div-hidden", window.localStorage);'><h2>Подсказка</h2></a>
 <div id=Подсказка_fact9_div-visible>
+<p>Воспользуйтесь тем, что \(O\) — ортоцентр <em>серединного треугольника</em>
+\(ABC\) (треугольника, вершинами которого являются середины сторон
+треугольника \(ABC\)).</p>
 </div>
-<a class="header" href="#Решение" id="Решение" onclick='sectionToggle("Решение_fact9_div-hidden", window.localStorage);'><h2>Решение</h2></a>
-<div id=Решение_fact9_div-visible>
+<a class="header" href="#Доказательство" id="Доказательство" onclick='sectionToggle("Доказательство_fact9_div-hidden", window.localStorage);'><h2>Доказательство</h2></a>
+<div id=Доказательство_fact9_div-visible>
+<p>Пусть \(A_1\), \(B_1\), \(C_1\) — середины сторон \(BC\),
+\(AC\) и \(AB\) треугольника \(ABC\) соответственно. Заметим, что
+\(O\) — ортоцентр треугольника \(A_1B_1C_1\). Сделаем гомотетию
+с центром в точке \(M\) и коэффициентом \(-2\). Тогда эта гомотетия
+переводит \(A_1\) в \(A\), \(B_1\) в \(B\), \(C_1\) в \(C\).
+То есть при данной гомотетии треугольник \(A_1B_1C_1\) переходит в
+треугольник \(ABC\). Тогда \(O\) перейдёт в \(H\), так как они
+ортоцентры соответствующих треугольников. Значит \(-2\overrightarrow{MO} =
+\overrightarrow{MH}\), что и требовалось.</p>
 
 </div>
                     </main>
@@ -230,7 +242,12 @@
         <script src="../book.js" type="text/javascript" charset="utf-8"></script>
 
         <!-- Custom JS scripts -->
+		<script type="text/javascript" src="../config_files/js/change_figures.js", charset="utf-8"></script>
 		<script type="text/javascript" src="../config_files/js/allow_hidden.js", charset="utf-8"></script>
+        
+        <script type="text/javascript" src="../allow_hidden.js"></script>
+        
+        <script type="text/javascript" src="../change_figures.js"></script>
         
 
         
