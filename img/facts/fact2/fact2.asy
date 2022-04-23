@@ -42,13 +42,13 @@ line a2 = tangent(al, A2);
 //draw
 
 //draw(Label("$\Omega$", Relative(-0.1), S+E*2, fontsize(11)), w, linewidth(0.3) + dashed);
-draw(Label("$\Omega$", Relative(-0.13), S*1.3, fontsize(11)), 
+draw(Label("$\Omega$", Relative(-0.13), S*1.3, fontsize(13)), 
                                     w, linewidth(0.3) + dashed);
 
-dot("$A$", A, NE);
-dot("$B$", B, SE);
-dot("$C$", C, SW);
-dot("$D$", D, NW);
+dot("$A$", A, NE, fontsize(13));
+dot("$B$", B, SE, fontsize(13));
+dot("$C$", C, SW, fontsize(13));
+dot("$D$", D, NW, fontsize(13));
 
 
 draw(segment(A, B));
